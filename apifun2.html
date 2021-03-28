@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+  
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,
+            initial-scale=1, shrink-to-fit=no" />
+  
+    <!-- Bootstrap CSS -->
+             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" type="text/css" href="apistyle.css">
+ <!--    <link rel="stylesheet" href=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity=
+"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous" /> -->
+  
+    <title>
+        TV Shows And Their Languages
+    </title>
+</head>
+  
+<body>
+
+  
+    <div class="container">
+        <!-- Title of  API website -->
+        <div class="h1">TV Shows and their languages</div>
+
+        <!-- body paragraph explaining what the API does -->
+        <div class="body">
+            <p>this website uses an API to show you various TV shows based on a word or phrase you search for.<br>
+            Click the "Show TV shows" button to start.</p>
+            
+            <!-- button that creates a prompt on the page -->        
+            <button type="button" id="fetchBtn"
+            class="button">
+            Show TV shows
+            </button>
+        </div>
+
+        <ul id="list"></ul>
+    </div>
+
+    <!-- div where results will be printed -->       
+    <div id="show-results" class="showresults"></div>
+  
+
+    <!-- script that prints results from the API -->  
+    <script>
+        //Generating info after clicking on button
+        let fetchBtn = document.getElementById("fetchBtn");
+  
+        fetchBtn.addEventListener("click", buttonclickhandler);
+  
+        function buttonclickhandler() {
+
+            //prompt that asks the user for input
+            let show = prompt("what show are you looking for?");
+                var xhr = new XMLHttpRequest();
+
+                // Setup our listener to process compeleted requests
+                xhr.onreadystatechange = function () {
+
+                    // Only run if the request is complete
+                    if (xhr.readyState !== 4) return;
+
+                    // Process our return data
+                    if (xhr.status == 200 && xhr.readyState == 4) {
+                        // What do when the request is successful
+                        let results = document.querySelector("#show-results");
+                        results.innerHTML = "";
+                                                    console.log(JSON.parse(xhr.responseText));
+
+                        JSON.parse(xhr.responseText).forEach((object) => {
+                            let showDiv = document.createElement('div');
+                            showDiv.innerHTML = `<p>${object.show.name} in ${object.show.language}`
+
+                            results.appendChild(showDiv);
+                        })
+                    }
+
+                };
+
+                // Create and send a GET request
+                // The first argument is the post type (GET, POST, PUT, DELETE, etc.)
+                // The second argument is the endpoint URL
+                xhr.open('GET', `http://api.tvmaze.com/search/shows?q=${show}`, true);
+                xhr.send();
+        }
+
+    </script>
+
+</body>
+  
+</html>
