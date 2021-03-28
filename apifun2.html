@@ -8,15 +8,10 @@
     <meta name="viewport" content="width=device-width,
             initial-scale=1, shrink-to-fit=no" />
   
-    <!-- Bootstrap CSS -->
-             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-            <link rel="stylesheet" type="text/css" href="apistyle.css">
- <!--    <link rel="stylesheet" href=
-"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity=
-"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="apistyle.css">
+
   
     <title>
         TV Shows And Their Languages
@@ -32,13 +27,19 @@
 
         <!-- body paragraph explaining what the API does -->
         <div class="body">
-            <p>this website uses an API to show you various TV shows based on a word or phrase you search for.<br>
-            Click the "Show TV shows" button to start.</p>
+            <p>This website uses an API to show you various TV shows based on a word or phrase you search for.<br>
+                It was found on tvmaze.api <br>
+                The options used for the API request was the "show Search" feature, specifically elements like show.name and show.language with the JSON format.<br><br>
+                Two applications where this API will be useful include:<br>
+                A situation where a user wants to find tv shows based on keywords.<br>
+                A situation where a user wants to find the language of a TV show name<br><br>
+
+            Click the "Show TV Shows" button to start.</p>
             
             <!-- button that creates a prompt on the page -->        
             <button type="button" id="fetchBtn"
             class="button">
-            Show TV shows
+            Show TV Shows
             </button>
         </div>
 
